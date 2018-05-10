@@ -71,6 +71,47 @@ public class UC01RegistraEmprestimoDeLivro {
 		emprestimo.setLivro(null);
 	}
 	
+	@Test
+	public void CT07QuandoUsuarioNuloerro() {
+		// cenario
+		Usuario usuario = null;
+		Emprestimo umEmprestimo = new Emprestimo ();
+		// acao
+		try {
+			umEmprestimo.setUsuario(usuario);
+			fail ("deveria falhar");
+		} catch (Exception e) {
+			//verificacao
+			assertEquals("Usuario invalido",e.getMessage());
+		}
+	}
+		
+		@Test
+		public void CT08QuandoAdataDeEmprestimoForInvalidaErro() {
+			// cenario
+			String data="30/02/2018";
+			Emprestimo umEmprestimo = new Emprestimo();
+			// acao
+			boolean resultadoObtido = umEmprestimo.validaData(data);
+			//verificacao
+			assertTrue(resultadoObtido);
+			
+		}
+		
+		@Test
+		public void CT09QuandoAdataDeEmprestimoForInvalidaErro() {
+			// cenario
+			String data="09/05/2018";
+			Emprestimo umEmprestimo = new Emprestimo();
+			// acao
+			boolean resultadoObtido = umEmprestimo.validaData(data);
+			//verificacao
+			assertTrue(resultadoObtido);
+			
+		}
+		
+		
+	}
 	
 	
 	
@@ -93,5 +134,3 @@ public class UC01RegistraEmprestimoDeLivro {
 	
 	
 	
-	
-}
